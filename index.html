@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Every Nation Academy</title>
+    <title>Kempton Park Technical Academy</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-    <!-- TOP BAR / NAVBAR -->
+    <!-- TOP BAR / NAVBAR (logo removed from navbar) -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="images/logo.jpg" alt="Every Nation Academy Logo" />
-            </div>
-
             <ul class="nav-menu">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -45,15 +41,43 @@
     <!-- HERO SECTION -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Every Nation Academy</h1>
-            <p class="motto">Excellence in Education | Building Tomorrow's Leaders Today</p>
+            <!-- Title: inline logo BEFORE the 'K' (slightly larger than K) -->
+            <div class="hero-title-wrap">
+                <h1 class="hero-title" aria-label="Kempton Park Technical Academy">
+                    <img src="images/logo.png" alt="Kempton Park mark" class="title-inline-logo-before" />
+                    <span class="title-k"></span><span class="title-rest">Kempton Park Technical Academy</span>
+                </h1>
+                <!-- centered inline as requested -->
+            <!--    <p class="motto" style="text-align:center;">Excellence in Education | Building Tomorrow's Leaders Today</p>   -->
+            </div>
+
+            <div class="hero-intro">
+                <p>
+                    Kempton Park Technical Academy provides high-quality, career-focused technical and tertiary education designed to close the gap between classroom theory and workplace practice. We deliver nationally accredited programmes across engineering, commerce and the humanities, emphasising hands-on learning, ethical leadership and employer-aligned skills so our graduates are ready to add immediate value.
+                </p>
+                <p>
+                    We also support students studying UNISA modules and university-level courses by offering tutorial assistance, module-specific coaching, assignment guidance and exam preparation. Whether you are completing a distance-learning module, upgrading your qualifications or pursuing a new professional path, our teaching team provides structured support to help you succeed.
+                </p>
+            </div>
         </div>
 
         <div class="slideshow-container">
-            <div class="slides fade"><img src="images/en11.jpg" alt="School Campus"></div>
-            <div class="slides fade"><img src="images/en10.jpg" alt="Happy Students"></div>
-            <div class="slides fade"><img src="images/en14.jpeg" alt="Classroom Learning"></div>
-            <div class="slides fade"><img src="images/en16.jpg" alt="Graduation Day"></div>
+            <div class="slides fade">
+                <img src="images/en1.jpg" alt="School Campus">
+                <div class="slide-caption">Expert guidance with UNISA modules &nbsp;|&nbsp; Engineering: Civil & Electrical</div>
+            </div>
+            <div class="slides fade">
+                <img src="images/en2.jpg" alt="Happy Students">
+                <div class="slide-caption">Hands-on workshops &nbsp;|&nbsp; Module coaching for university-level courses</div>
+            </div>
+            <div class="slides fade">
+                <img src="images/en3.jpeg" alt="Classroom Learning">
+                <div class="slide-caption">Algebra, Calculus & Mathematics support &nbsp;|&nbsp; Exam preparation</div>
+            </div>
+            <div class="slides fade">
+                <img src="images/en4.jpg" alt="Graduation Day">
+                <div class="slide-caption">Practical projects, placements & career-ready skills</div>
+            </div>
 
             <div class="dots">
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -68,7 +92,19 @@
     <section class="programmes">
         <div class="container">
             <h2 class="section-title">Our Tertiary Programmes</h2>
-            <p class="section-subtitle">Nationally Accredited | Industry-Aligned | Future-Ready Qualifications</p>
+
+            <!-- centered inline as requested -->
+      <!--      <p class="section-subtitle" style="text-align:center;">Nationally Accredited | Industry-Aligned | Future-Ready Qualifications</p>   -->
+
+            <!-- NEW: explanation paragraph requested by user (justified) -->
+            <div class="programmes-intro">
+                <p>
+                    We provide tailored support for university modules — including UNISA distance-learning modules — and for university-level engineering courses. Our team offers focused tutorials and assignment support across core engineering streams (Civil and Electrical), helping students strengthen fundamentals, improve problem-solving and prepare confidently for assessments.
+                </p>
+                <p>
+                    Whether you are working through an individual UNISA module or completing a multi-year university programme, our approach combines subject-matter expertise with practical examples and exam-focused guidance so you can progress efficiently and successfully.
+                </p>
+            </div>
 
             <div class="programmes-grid">
                 <div class="programme-card">
@@ -84,6 +120,17 @@
                         <li>IT Systems & Network Administration</li>
                         <li>Programming & Software Development</li>
                     </ul>
+
+                    <!-- Read more button (inline JS) and hidden justified description (inline styles) -->
+                    <button type="button" onclick="(function(b,id){var e=document.getElementById(id); if(!e) return; if(e.style.display==='block'){e.style.display='none'; b.innerText='Read more'; b.setAttribute('aria-expanded','false');} else {e.style.display='block'; b.innerText='Show less'; b.setAttribute('aria-expanded','true');}})(this,'eng-more')" aria-expanded="false" aria-controls="eng-more" style="display:block;margin:14px auto;padding:8px 14px;background:#003087;color:#fff;border:none;border-radius:6px;cursor:pointer;">
+                        Read more
+                    </button>
+
+                    <div id="eng-more" style="display:none; max-width:760px;margin:12px auto 0 auto; text-align:justify; text-justify:inter-word;">
+                        <p style="margin:0;">
+                            These engineering, science and technology modules provide the technical foundations and applied skills required for engineering and technology careers. Students study core mathematics and physics, explore mechanics and material behaviour, and gain practical workshop experience in structural construction, fluid mechanics and systems engineering. The curriculum balances theory with laboratory and project work to develop problem-solving, technical drawing and hands-on competence.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="programme-card">
@@ -97,6 +144,17 @@
                         <li>Quantitative Methods</li>
                         <li>Business Statistics</li>
                     </ul>
+
+                    <!-- Read more button and hidden justified description -->
+                    <button type="button" onclick="(function(b,id){var e=document.getElementById(id); if(!e) return; if(e.style.display==='block'){e.style.display='none'; b.innerText='Read more'; b.setAttribute('aria-expanded','false');} else {e.style.display='block'; b.innerText='Show less'; b.setAttribute('aria-expanded','true');}})(this,'com-more')" aria-expanded="false" aria-controls="com-more" style="display:block;margin:14px auto;padding:8px 14px;background:#003087;color:#fff;border:none;border-radius:6px;cursor:pointer;">
+                        Read more
+                    </button>
+
+                    <div id="com-more" style="display:none; max-width:760px;margin:12px auto 0 auto; text-align:justify; text-justify:inter-word;">
+                        <p style="margin:0;">
+                            The commerce and financial sciences modules develop practical financial literacy and analytical skills. Topics include accounting principles, tax law and compliance, management of organisational finances, auditing methodologies and quantitative techniques. Students learn to interpret financial statements, assess fiscal performance and apply statistical tools to support business decision-making and risk management.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="programme-card">
@@ -108,6 +166,17 @@
                         <li>International Relations</li>
                         <li>Philosophy</li>
                     </ul>
+
+                    <!-- Read more button and hidden justified description -->
+                    <button type="button" onclick="(function(b,id){var e=document.getElementById(id); if(!e) return; if(e.style.display==='block'){e.style.display='none'; b.innerText='Read more'; b.setAttribute('aria-expanded','false');} else {e.style.display='block'; b.innerText='Show less'; b.setAttribute('aria-expanded','true');}})(this,'hum-more')" aria-expanded="false" aria-controls="hum-more" style="display:block;margin:14px auto;padding:8px 14px;background:#003087;color:#fff;border:none;border-radius:6px;cursor:pointer;">
+                        Read more
+                    </button>
+
+                    <div id="hum-more" style="display:none; max-width:760px;margin:12px auto 0 auto; text-align:justify; text-justify:inter-word;">
+                        <p style="margin:0;">
+                            Humanities and social science modules cultivate critical thinking, ethical reasoning and an understanding of legal and societal systems. Students study property and conveyancing law, philosophical frameworks and international relations, building the capacity to analyse policy, reason clearly and communicate arguments effectively—skills that apply across public, legal and policy-focused careers.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +186,8 @@
     <section id="register" class="registration">
         <div class="container">
             <h2 class="section-title">Student Registration Enquiry</h2>
-            <p class="section-subtitle">Please complete the form and we'll get back to you.</p>
+            <!-- centered inline as requested -->
+           <!-- <p class="section-subtitle" style="text-align:center;">Please complete the form and we'll get back to you.</p>  -->
 
             <form id="registrationForm" class="registration-form" novalidate>
                 <div class="form-row">
@@ -147,7 +217,7 @@
 
                 <div class="form-row checkbox-row">
                     <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent">I consent to be contacted by Every Nation Academy regarding this enquiry. (Required)</label>
+                    <label for="consent">I consent to be contacted by Kempton Park Technical Academy regarding this enquiry. (Required)</label>
                 </div>
 
                 <!-- Honeypot field to trap bots -->
@@ -162,93 +232,86 @@
 
                 <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
             </form>
-
-            <p class="form-note">If you prefer, you can also email us directly: <a href="mailto:emmanuelchipfuwa@gmail.com">emmanuelchipfuwa@gmail.com</a></p>
         </div>
     </section>
 
-    <!-- ABOUT SECTION (image on the left, text on the right) -->
+    <!-- ABOUT SECTION -->
     <section id="about" class="about">
         <div class="container about-grid">
             <div class="about-image">
-                <img src="images/en3.jpeg" alt="Lecturers and students at Every Nation Academy">
+                <img src="images/about.jpg" alt="Lecturers and students at Kempton Park Technical Academy">
             </div>
             <div class="about-text">
-                <h2 class="section-title">About Every Nation Academy</h2>
+                <h2 class="section-title">About Us</h2>
                 <p class="about-paragraph">
-                    Every Nation Academy was founded to bridge academic excellence with practical, career-ready skills. We deliver nationally accredited programmes across engineering, commerce and the humanities, designed in partnership with industry to ensure graduates can step confidently into the workplace. Our curriculum emphasises applied learning, ethical leadership and innovation so students leave prepared for real challenges and opportunities.
+                    Kempton Park Technical Academy was founded to bridge academic excellence with practical, career-ready skills. We deliver nationally accredited programmes across engineering, commerce and the humanities, designed in partnership with industry to ensure graduates can step confidently into the workplace. Our curriculum emphasises applied learning, ethical leadership and innovation so students leave prepared for real challenges and opportunities.
                 </p>
                 <p class="about-paragraph">
                     Our lecturers bring more than a decade of combined academic and industry experience to the classroom, blending rigorous scholarship with hands-on mentorship. With small class sizes, personalised support and real-world projects, our teaching team focuses on transforming potential into professional competence — empowering students to lead with integrity, creativity and technical excellence.
                 </p>
+                <p class="about-paragraph">
+                    We provide a comprehensive student support system that includes one-on-one tutorial sessions, module clinics and flexible timetabling for part-time and working students. Our facilities support blended learning — students can attend practical workshops on campus, access curated online resources, and receive targeted remedial help if they need to bring specific skills up to standard.
+                </p>
+                <p class="about-paragraph">
+                    The Academy maintains close links with regional employers and higher education partners to keep our courses relevant and to create pathways for internships, work placements and further study. We also assist distance learners by providing structured guidance for UNISA modules and other university-level coursework, helping students to manage assignments, prepare for exams and navigate academic requirements with confidence.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <div class="container contact-grid">
-            <div class="map-wrapper">
-                <!-- Google Maps embed using address query -->
-                <iframe
-                    class="map-frame"
-                    src="https://www.google.com/maps?q=183%20West%20Street%2C%20Kempton%20Park%2C%20Johannesburg%2C%20South%20Africa&output=embed"
-                    allowfullscreen
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Every Nation Academy location on Google Maps"></iframe>
-            </div>
-
-            <div class="contact-details">
-                <h2 class="section-title">Contact Us</h2>
-
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt contact-icon"></i>
-                    <div>
-                        <strong>Address</strong>
-                        <p>183, West Street, Kempton Park, Johannesburg, South Africa</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-phone contact-icon"></i>
-                    <div>
-                        <strong>Phone</strong>
-                        <p>
-                            <a href="tel:+27617731204">+27 61 773 1204</a><br>
-                            <a href="tel:+27766086556">+27 76 608 6556</a><br>
-                            <a href="tel:+27679946228">+27 67 994 6228</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-envelope contact-icon"></i>
-                    <div>
-                        <strong>Email</strong>
-                        <p>
-                            <a href="mailto:emmanuelchipfuwa@gmail.com">emmanuelchipfuwa@gmail.com</a><br>
-                            <a href="mailto:info@everynationacademy.ac.za">info@everynationacademy.ac.za</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <i class="fas fa-clock contact-icon"></i>
-                    <div>
-                        <strong>Office Hours</strong>
-                        <p>Mon - Fri: 08:00 — 17:00</p>
-                    </div>
-                </div>
-            </div>
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact">
+    <div class="container contact-grid">
+        <div class="map-wrapper">
+            <iframe
+                class="map-frame"
+                src="https://www.google.com/maps?q=183%20West%20Street%2C%20Kempton%20Park%2C%20Johannesburg%2C%20South%20Africa&output=embed"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Kempton Park Technical Academy location on Google Maps"></iframe>
         </div>
-    </section>
+
+        <div class="contact-details-new">
+            <h2 class="section-title">Contact Us</h2>
+
+            <dl class="contact-info-list">
+                <div class="contact-info-item">
+                    <dt>Address</dt>
+                    <dd>183 West Street<br>Kempton Park, Johannesburg<br>South Africa</dd>
+                </div>
+
+                <div class="contact-info-item">
+                    <dt>Phone</dt>
+                    <dd>
+                        <a href="tel:+27617731204">+27 61 773 1204</a><br>
+                        <a href="tel:+27766086556">+27 76 608 6556</a><br>
+                        <a href="tel:+27679946228">+27 67 994 6228</a>
+                    </dd>
+                </div>
+
+                <div class="contact-info-item">
+                    <dt>Email</dt>
+                    <dd>
+                        <a href="mailto:emmanuelchipfuwa@gmail.com">emmanuelchipfuwa@gmail.com</a><br>
+                        <a href="mailto:info@kemptonparkacademy.ac.za">info@kemptonparkacademy.ac.za</a>
+                    </dd>
+                </div>
+
+                <div class="contact-info-item">
+                    <dt>Office Hours</dt>
+                    <dd>Mon – Fri: 08:00 — 17:00</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</section>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container footer-grid">
             <div class="footer-left">
-                <p>&copy; <span id="copyYear"></span> Every Nation Academy. All rights reserved.</p>
+                <p>&copy; <span id="copyYear"></span> Kempton Park Technical Academy. All rights reserved.</p>
                 <p class="small">Registered &amp; Accredited — Terms &amp; Privacy apply.</p>
             </div>
 

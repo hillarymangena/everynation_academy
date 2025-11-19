@@ -9,7 +9,21 @@
 body {
     background: #f8f9fa;
     color: #333;
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+/* Make paragraph text fully justified (left and right) */
+p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+}
+
+/* Keep small decorative text centered where appropriate */
+.motto,
+.section-subtitle,
+.form-note {
+    text-align: center !important;
 }
 
 /* Navbar */
@@ -31,10 +45,6 @@ body {
     align-items: center;
     padding: 0 20px;
     flex-wrap: wrap;
-}
-
-.logo img {
-    height: 60px;
 }
 
 .nav-menu {
@@ -105,20 +115,66 @@ body {
 }
 
 .hero-content {
-    padding: 60px 20px;
-    background: linear-gradient(rgba(0, 48, 135, 0.8), rgba(0, 48, 135, 0.9));
+    padding: 40px 20px;
+    background: linear-gradient(rgba(0, 48, 135, 0.85), rgba(0, 48, 135, 0.9));
     color: white;
 }
 
-.hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+/* Title with inline logo BEFORE the 'K' */
+.hero-title-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 20px;
 }
 
+.hero-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 44px;
+    color: #ffd700;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    line-height: 1.05;
+}
+
+/* small inline logo placed before the K and slightly larger than the letter */
+.title-inline-logo-before {
+    height: 1.25em; /* slightly bigger than the letter height */
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* separate styles for the 'K' to ensure proportion */
+.title-k {
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
+/* rest of the title text */
+.title-rest {
+    font-weight: 700;
+}
+
+/* motto */
 .motto {
-    font-size: 22px;
+    font-size: 18px;
     font-style: italic;
-    opacity: 0.9;
+    opacity: 0.95;
+    color: #fff;
+    margin-top: 6px;
+}
+
+/* hero intro paragraphs (justified by global p rule) */
+.hero-intro {
+    max-width: 1000px;
+    margin: 18px auto 0 auto;
+    color: #f1f5fb;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 /* Slideshow */
@@ -130,12 +186,40 @@ body {
 
 .slides {
     display: none;
+    position: relative; /* needed for caption positioned inside */
 }
 
 .slides img {
     width: 100%;
-    height: 500px;
+    height: 480px;
     object-fit: cover;
+}
+
+/* Slide caption overlay */
+.slide-caption {
+    position: absolute;
+    left: 20px;
+    bottom: 24px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    max-width: calc(100% - 40px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    text-align: left; /* captions read better left aligned */
+}
+
+/* make caption responsive */
+@media (max-width: 720px) {
+    .slide-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
 }
 
 .fade {
@@ -197,12 +281,21 @@ body {
         display: flex;
     }
 
-    .hero-content h1 {
-        font-size: 36px;
+    .hero-content {
+        padding: 30px 12px;
     }
 
-    .motto {
-        font-size: 18px;
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .title-inline-logo-before {
+        height: 1.25em;
+    }
+
+    .hero-intro {
+        padding: 0 12px;
+        font-size: 15px;
     }
 }
 
@@ -227,8 +320,18 @@ body {
 .section-subtitle {
     font-size: 18px;
     color: #555;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-style: italic;
+}
+
+/* programmes intro paragraph */
+.programmes-intro {
+    max-width: 1000px;
+    margin: 0 auto 28px auto;
+    color: #444;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
 }
 
 /* Programmes Grid */
@@ -385,13 +488,6 @@ textarea {
     color: #003087;
 }
 
-/* small note under form */
-.form-note {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #666;
-}
-
 /* ABOUT SECTION */
 .about {
     padding: 60px 20px;
@@ -405,7 +501,6 @@ textarea {
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
 }
 
 .about-image img {
@@ -463,7 +558,7 @@ textarea {
     border: 0;
 }
 
-/* Contact details */
+/* Contact details - use definition list grid to align labels and content */
 .contact-details {
     padding: 20px;
     background: #fdfdfd;
@@ -471,27 +566,45 @@ textarea {
     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
-.contact-item {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 18px;
-    align-items: flex-start;
+.contact-list {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 14px 20px;
+    align-items: start;
 }
 
-.contact-icon {
-    font-size: 22px;
+.contact-list dt {
+    font-weight: 700;
     color: #003087;
-    min-width: 28px;
+    text-align: right;
+    padding-right: 8px;
 }
 
-.contact-details a {
+.contact-list dd {
+    margin: 0;
+    color: #333;
+}
+
+/* links inside contact content */
+.contact-list a {
     color: #003087;
     text-decoration: none;
     font-weight: 600;
 }
 
-.contact-details a:hover {
+.contact-list a:hover {
     color: #00205f;
+}
+
+/* On small screens collapse to single column (label above content) */
+@media (max-width: 720px) {
+    .contact-list {
+        grid-template-columns: 1fr;
+    }
+    .contact-list dt {
+        text-align: left;
+        padding-right: 0;
+    }
 }
 
 /* FOOTER */
@@ -546,7 +659,7 @@ textarea {
     color: #ffd700;
 }
 
-/* Responsive */
+/* Responsive tweaks */
 @media (max-width: 992px) {
     .about-grid {
         grid-template-columns: 1fr;
@@ -576,12 +689,62 @@ textarea {
     }
 }
 
-@media (max-width: 720px) {
-    .registration-form {
-        padding: 20px;
-    }
+/* ——— CLEAN & PERFECTLY ALIGNED CONTACT SECTION (no conflict) ——— */
+.contact-details-new {
+    padding: 30px 25px;
+    background: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
 
-    .hero-content h1 {
-        font-size: 28px;
+.contact-info-list {
+    display: grid;
+    grid-template-columns: 130px 1fr;   /* perfect gap between label and content */
+    gap: 18px 25px;
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+.contact-info-item {
+    display: contents; /* lets dt and dd become part of the grid */
+}
+
+.contact-info-list dt {
+    font-weight: 700;
+    color: #003087;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 1.5;
+}
+
+.contact-info-list dd {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.contact-info-list a {
+    color: #003087;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.contact-info-list a:hover {
+    color: #00205f;
+    text-decoration: underline;
+}
+
+/* Mobile responsive – stack vertically */
+@media (max-width: 768px) {
+    .contact-info-list {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    
+    .contact-info-list dt {
+        text-align: left;
+        font-weight: 600;
+        color: #003087;
     }
 }
